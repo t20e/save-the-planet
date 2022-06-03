@@ -1,0 +1,11 @@
+//ignore whole directory all files in it included
+config/
+//ignore DS_store file (mac users)
+.DS_store
+//ignore a whole folder/ directory
+images/
+flask_app/saved.txt
+
+//ingore file
+__init__.py
+uploaded_files/

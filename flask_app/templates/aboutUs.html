@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main_page.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/aboutUs_page.css')}}">
+</head>
+
+<body>
+    <div id="mainContainer">
+        <div class="row1">
+            <div class="headerOne">
+                <h1>Save The Earth</h1>
+            </div>
+            <div class="links">
+                {% if 'first_name' in session %}
+                <h6 class="links_items">Hi {{session['first_name']}} </h6>
+                <a class="links_items" href="/save-planet">home</a>
+                <a class="links_items" href="/save-planet/logout"> logout </a>
+                {% else %}
+                <a class="links_items" href="/save-planet">home</a>
+                <a class="links_items" href="/save-planet/reg">sign-up</a>
+                <a class="links_items" href="/save-planet/login">login</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row2">
+            <h4 >About Us</h4>
+            <p>
+                The Earth is home to the millions of life forms that inhabit it. There are both terrestrial creatures
+                that live on the land, and aquatic creatures that live in water.
+                <br>
+                <br>
+                Life on Earth is possible because of the availability of sunshine, air, water and vegetation on it. If
+                life is to continue on Earth, the planet must be safeguarded from degradation and destruction. When
+                land, air and water are polluted, all life forms that inhabit the Earth are in danger. Air pollution,
+                water pollution, soil erosion and deforestation are only some of the environmental issues. The
+                destruction of the Earth and its environment has been caused due to many of man’s activities.
+                <br>
+                <br>
+                Excessive vehicular traffic has led to severe air pollution. Likewise, an ever-increasing number of
+                factories emitting toxic smoke into the air has polluted the air immensely. Similarly, dumping of
+                domestic and industrial garbage into water bodies has resulted in water pollution.
+                <br>
+                <br>
+                The clearing of forests has also led to ecological damage. As trees are invaluable in maintaining
+                ecological equilibrium, the felling of trees has led to environmental degradation including global
+                warming and climate change. It is necessary that the Earth is protected so that life can be protected.
+                Man’s activities, driven by greed and selfishness, have caused degradation of the Earth, and its
+                resources like air and water. Air pollution, water pollution, land degradation and deforestation have
+                been caused due to man’s actions. When land, air, water and vegetation come under threat by man’s
+                activities, the lives of all life forms including man is under peril.
+                <br>
+                <br>
+                The Earth and its resources can be protected by man. Every little effort on our part to save the Earth
+                and its environment can make a difference. Plastics, for instance, are a source of major environmental
+                degradation. We can take little steps like avoiding the use of plastics. For example, we can avoid using
+                plastic water bottles. We can instead use steel, glass or clay bottles to carry or store water.
+                <br>
+                <br>
+                Similarly, we can plant trees in our neighbourhood. Trees play a major role in ecological balance. By
+                planting trees we can improve our environment.
+                <br>
+                <br>
+                We must also save water which is a precious natural resource. We must also avoid polluting water bodies.
+                We must be judicious in the use of all natural resources. We can thus save the Earth.
+
+
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

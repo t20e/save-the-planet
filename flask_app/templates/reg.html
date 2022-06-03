@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/reg_page.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/pop_up_error.css')}}">
+    <title>sign up</title>
+</head>
+<body>
+    <div id="mainContainer">
+        <div class="row1">
+            <h1>Register</h1>
+        </div>
+        <div class="row2">
+            <form action='/save-planet/registering' method='post' enctype="multipart/form-data">
+                <input autofocus type='text' placeholder="first name" name='first_name'>
+                <br>
+                <input type='text' placeholder="last name" name='last_name'>
+                <br>
+                <label for="age">age</label>
+                <input class="age" type='number' name='age'>
+                <br>
+                <input type='text' placeholder="email" name='email'>
+                <br>
+                <input type='password' placeholder="password" name='password'>
+                <br>
+                <input type='password' placeholder="confirm password" name='confirmPassword'>
+                <br>
+                <label class="pfpLabel"> upload optional profile picture
+                    <input type="file" name="pfp" id="pfp" onchange="showPfpFun(event);">
+                </label>
+                <br>
+                <img src="" alt="" id="showPfp">
+                <br>
+                <input type='submit' id="submitBtn" value='sign up'>
+            </form>
+        </div>
+        <div class="row3">
+            <p class="pFollowUs">follow us here</p>
+            <div class="follow_links">
+                <a href="https://twitter.com/Twitter">
+                    <img src="{{url_for('static',filename = 'images/icons/twitter-icon-83.png')}}" alt="twitter-icon-83">
+                </a>
+                <a href="https://discord.com/channels/781093671554121759/782278328991481876">
+                    <img src="{{url_for('static',filename = 'images/icons/Discord-Logo-Color.png')}}" alt="Discord-Logo">
+                </a>
+            </div>
+        </div>
+        <a class="regInstead" href="/save-planet/login">or login</a>
+    </div>
+    <script src="{{url_for('static', filename='js/popUpErrorController.js')}}"></script>
+    {% with messages = get_flashed_messages() %}
+    {% if messages%}
+        <div class=" model_container_error">
+            <div class="model_error">
+                <h4>Please fix these errors</h4>
+                {% if messages %}
+                <!-- check if there are any messages -->
+                    {% for message in messages %}
+                    <!-- loop through the messages -->
+                    <p class="pTag_error" style="display: block;">• {{message}}</p> <!-- display 							each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {% endwith %}
+    <script src="{{url_for('static', filename='js/validate_form.js')}}"></script>
+</body>
+</html>

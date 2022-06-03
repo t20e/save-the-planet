@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+
+#mainContainer {
+    height: auto;
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px auto;
+}
+h4{
+    text-decoration: underline;
+}

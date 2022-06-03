@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+.carousel{
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+.carousel_image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel_track-container{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* //overflow:hidden will hide the images from appearing on the side if u want to show the iamges then remove this line  */
+}
+.carousel_track{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 500ms ease-in;
+}
+.carousel_slide{
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.carousel_btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+.carousel_btn--left{
+    left: 6%;
+}
+.carousel_btn--right{
+    left: 90%;
+}
+.carousel_btn img{
+    width: 30px;
+    height: 30px;
+}
+.carousel_nav{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.carsousel_indicator{
+    border: 0;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(0, 0, 0, .4);
+    margin: 0 10px;
+    cursor: pointer;
+}
+.carsousel_indicator.current_slide{
+    /* //this is where we select the indicator to a darker color  */
+    background-color: rgba(0, 0, 0, .9);
+
+}
+.is-hidden{ display: none;}

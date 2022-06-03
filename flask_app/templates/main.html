@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X- UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main_page.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/carousel.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/donation_pop_up.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/pop_up_error.css')}}">
+    <title>Save The Earth</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')
+        $SCRIPT_ROOT = {{ request.script_root | tojson }};
+    </script>
+</head>
+<body>
+    {% if userVisted == 1%}
+    <script>alert('I build this website for my portfolio. You can not donate here please look elsewhere :} ')</script>
+    {%endif%}
+    <script id="allCausesScript">
+        const allCauses = JSON.parse('{{allCauses | tojson | safe}}')
+        const userAlreadyContributed = {{ userAlreadyContributed | tojson | safe }}
+    </script>
+    <div id="mainContainer">
+        <a
+            href="https://github.com/t20e/save-the-planet-portfolio/tree/master/Documents/coding_projects/save-the-planet-folder/save-the-planet-project">
+            <img id="linkImg" src="{{url_for('static',filename = '/images/icons/gitCodeLink_img-01.png')}}"
+                alt="link img">
+        </a>
+        <div class="row1">
+            <div class="headerOne">
+                <h1>Save The Earth</h1>
+            </div>
+            <div class="links">
+                {% if 'first_name' in session %}
+                {% if user.profile_pic %}
+                <img class="userPfp"
+                    src="{{ url_for('static', filename='/images/uploaded_files/' + user.profile_pic) }}" alt="" />
+                {% else %}
+                <img class="userPfp" src="{{ url_for('static', filename='/images/uploaded_files/noPfp.jpg') }}"
+                    alt="" />
+                {% endif %}
+                <h6 class="links_items">Hi {{session['first_name']}} </h6>
+                <a class="links_items" href="/save-planet/about_us">about us</a>
+                <a class="links_items" href="/save-planet/logout"> logout </a>
+                {% else %}
+                <a class="links_items" href="/save-planet/about_us">about us</a>
+                <a class="links_items" href="/save-planet/reg">sign-up</a>
+                <a class="links_items" href="/save-planet/login">login</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row2">
+            <!-- slider  when one is selected it shows the info in row 3 -->
+            <div class="carousel">
+                <div class="carousel_track-container">
+                    <ul class="carousel_track">
+                        <li class="carousel_slide current_slide ">
+                            <img class="carousel_image"
+                                src="{{url_for('static',filename = '/images/support_forest/deforest.jpeg')}}" alt="">
+                        </li>
+                        <li class="carousel_slide">
+                            <img class="carousel_image"
+                                src="{{url_for('static',filename = '/images/support_scientist/scientist.jpg')}}" alt="">
+                        </li>
+                        <li class="carousel_slide">
+                            <img class="carousel_image"
+                                src="{{url_for('static',filename = '/images/support_reefs/barrier-reef.jpeg')}}" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <button class="carousel_btn carousel_btn--left is-hidden">
+                    <img src="{{url_for('static',filename = '/images/icons/left-slider.svg')}}" alt="">
+                </button>
+                <button class="carousel_btn carousel_btn--right">
+                    <img src="{{url_for('static',filename = '/images/icons/right-slider.svg')}}" alt="">
+                </button>
+                <div class="carousel_nav">
+                    <button class="carsousel_indicator current_slide"></button>
+                    <button class="carsousel_indicator"></button>
+                    <button class="carsousel_indicator"></button>
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <h4 class="hInfo"></h4>
+            <div class="cause_detail">
+                <div class="p_img_info">
+                    <img class="imgInfo_detail" src="" alt="second image">
+                </div>
+                <div class="p_img_info">
+                    <p class="pInfo_detail"></p>
+                </div>
+            </div>
+            <hr>
+            <p class="pInfo"></p>
+            <div class="iconsToLikeOrDonateDiv">
+                {% if 'first_name' in session %}
+                <button id="likeCause">
+                    <form name="formLikeCause" id="likeACause">
+                        <input type='hidden' name="user_id_for_like" value="{{session['id']}}">
+                        <input type="hidden" name="cause_id_for_like" id="likedCauseId" value="">
+                        <input type='submit' class="inputSubmit"
+                            onclick="submitForm('/save-planet/likedCause','#likeACause', 'formLikeCause', 'cause_id_for_like')"
+                            value='submit'>
+                    </form>
+                </button>
+                <button id="donateToCause">Donate</button>
+                {% else %}
+                <!-- this input is to stop error querying search -->
+                <input type='submit' class="inputSubmit" value='submit'>
+                {#
+                <!-- this allows me to  make the connection with flask if user is not logged in--> #}
+                <button onclick="window.location.href='/save-planet/reg'" id="likeCause"> </button>
+                <button onclick="window.location.href='/save-planet/reg'" id="donateToCause">Donate</button>
+                {% endif %}
+            </div>
+        </div>
+
+        <h3>Recent Contributions</h3>
+        <div class="row4" id="repeatedDiv">
+            {#
+            <!-- // ajax here to repeat when user likes or donateToCause
+                    repeat this div -->
+            #}
+        </div>
+    </div>
+    {# pop-up model here#}
+    <div class="model_container" id="modelIDContainer">
+        <div class="model">
+            <button onclick="closePopUpForm()" id="closePopUpForm">X</button>
+            <h1 class="modelHOne">Donate</h1>
+            <form id="donationForm" name="formDonateCause">
+                <div class="donation_slider_one">
+                    <input type='hidden' name="user_id" value="{{session['id']}}">
+                    <input type="hidden" name="cause_id" value="">
+                    <div class="sameLineFields">
+                        <label>
+                            <input type='text' class="sameLinesInput form_fname" name='first_name'
+                                placeholder="first name" value="{{ session['first_name']}}">
+                            <span class="fname_error_one"></span>
+                        </label>
+                        <label>
+                            <input type='text' class="sameLinesInput form_lname" name='last_name'
+                                placeholder="last name" value="{{ session['last_name']}}">
+                            <span class="lname_error_one"></span>
+                        </label>
+                    </div>
+                    <div class="otherInputs">
+                        <input type='text' placeholder="address" class="address" name='address'>
+                        <span class="address_error_one"></span>
+                    </div>
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput" type='text' placeholder="Apartment, suite.. (optional)"
+                                name='OptionalApt'>
+                        </label>
+                        <label>
+                            <input type='number' class="sameLinesInput postal" placeholder="postal code"
+                                name='postal_code'>
+                            <span class="postal_error_one"></span>
+                        </label>
+                    </div>
+                    <div class="sameLineFields">
+                        <label>
+                            <input type='text' class="sameLinesInput state" placeholder="state" name='state'>
+                            <span class="state_error_one"></span>
+                        </label>
+                        <label>
+                            <input type='text' class="sameLinesInput country" placeholder="country" name='country'>
+                            <span class="country_error_one"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="donation_slider_two">
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput donation_amount" type='text' placeholder="donation amount"
+                                name='donation_amount'>
+                            <span class="amount_error_one"></span>
+                        </label>
+                        <label>
+                            <input class="sameLinesInput email" type='text' name='email' placeholder="email"
+                                value="{{ session['email'] }}">
+                            <span class="email_error_one"></span>
+                        </label>
+                    </div>
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput nameOnCard" type='text' name='name_on_card'
+                                placeholder="name on card">
+                            <span class="nameOnCard_error_one"></span>
+                        </label>
+                        <label>
+                            <select class="sameLinesInput cardType" name="card_type">
+                                <option value="" disabled selected hidden>card type</option>
+                                {% for c in cardData %}
+                                <option value="{{ c }}">{{ c }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="cardType_error_one"></span>
+                        </label>
+                    </div>
+                    <div class="otherInputs">
+                            <input type='number' class="cardNum" placeholder="card number" name='card_number'>
+                            <span class="cardNum_error_one"></span>
+                    </div>
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput cvv" type='number' name='cvv' placeholder="cvv">
+                            <span class="cvv_error_one"></span>
+                        </label>
+                        <label>
+                            <input class="sameLinesInput expDate" type='number' placeholder="expiration date(MM/YY)"
+                                name='expiration_date'>
+                            <span class="expirationCard_error_one"></span>
+                        </label>
+                    </div>
+                    <!-- {# <input type='submit' id="submitBtn"
+                        onclick="submitForm('/save-planet/donateToCause','#donationForm', 'formDonateCause', 'cause_id')"
+                        value='donate'> #} -->
+                    <button class="submitBtn submitBtnOne"
+                        onclick="submitForm('/save-planet/donateToCause','#donationForm', 'formDonateCause', 'cause_id')">donate</button>
+                </div>
+            </form>
+            <button class="gobackBtn" onclick="gobackForm()">back</button>
+            <button class="submitBtn nextBtn" onclick="moveToNextSectionForm()">next</button>
+        </div>
+        {# for updating donation cause pop up #}
+        <div class="modelPopUpForUpdatingCause">
+            <button onclick="closePopUpForm()" id="closePopUpForm">X</button>
+            <h1 class="modelHOne">Donate</h1>
+            <form id="donationFormUpdate" name="formDonateCauseUpdate">
+                <div class="donation_ForUpdate">
+                    <input type='hidden' name="user_id" value="{{session['id']}}">
+                    <input type="hidden" name="cause_id" value="">
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput donation_amount_two" type='text' placeholder="donation amount" name='donation_amount'>
+                            <span class="amount_error_two"></span>
+                        </label>
+                        <label >
+                            <input class="sameLinesInput email_two" type='text' name='email' placeholder="email"
+                            value="{{ session['email'] }}">
+                            <span class="email_error_two"></span>
+                        </label>
+                    </div>
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput nameOnCard_two" type='text' name='name_on_card' placeholder="name on card">
+                            <span class="nameOnCard_error_two"></span>
+                        </label>
+                        <label >
+                            <select class="sameLinesInput cardType_two" name="card_type">
+                                <option value="" disabled selected hidden>card type</option>
+                                {% for c in cardData %}
+                                <option value="{{ c }}">{{ c }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="cardType_error_two"></span>
+                        </label>
+                    </div>
+                    <div class="otherInputs">
+                        <input type='number' class="cardNum_two" placeholder="card number" name='card_number'>
+                        <span class="cardNum_error_two"></span>
+                    </div>
+                    <div class="sameLineFields">
+                        <label>
+                            <input class="sameLinesInput cvv_two" type='number' name='cvv' placeholder="cvv">
+                            <span class="cvv_error_two"></span>
+                        </label>
+                        <label>
+                            <input class="sameLinesInput expDate_two" type='number' placeholder="expiration date(MM/YY)"
+                            name='expiration_date'>
+                            <span class="expirationCard_error_two"></span>
+                        </label>
+                    </div>
+                    <!-- {# <input type='submit' id="submitBtn" value='donate'
+                        onclick="submitForm('/save-planet/donateToCause','#donationFormUpdate', 'formDonateCauseUpdate', 'cause_id')"> #} -->
+                    <button class="submitBtn submitBtnTwo"
+                        onclick="submitForm('/save-planet/donateToCause','#donationFormUpdate', 'formDonateCauseUpdate', 'cause_id')">donate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- error pop up on form -->
+    <div class=" model_container_errorMain">
+        <div class="model_error">
+            <h4>Please fix these errors</h4>
+        </div>
+    </div>
+    {% if 'first_name' in session %}
+    <script>
+        //for post form
+        var causeIdforLikes = document.forms['formLikeCause']['cause_id_for_like']
+        var causeIdForDonate = document.forms['formDonateCause']['cause_id']
+        //for update form
+        var causeIdForDonateUpdate = document.forms['formDonateCauseUpdate']['cause_id']
+    </script>
+    {% else %}
+    <script>
+        var causeIdforLikes = null
+        var causeIdForDonate = null
+    </script>
+    {% endif %}
+    <script src="{{url_for('static', filename='js/carousel.js')}}"></script>
+    <script src="{{url_for('static', filename='js/recent_contribution_query.js')}}"></script>
+    <script src="{{url_for('static', filename='js/validate_form.js')}}"></script>
+    <script src="{{url_for('static', filename='js/popUpErrorController.js')}}"></script>
+    <script src="{{url_for('static', filename='js/donationPopUp.js')}}"></script>
+</body>
+
+</html>

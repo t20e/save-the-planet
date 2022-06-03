@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+::placeholder {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+label {
+    width: 45%;
+    height: auto;
+}
+
+span {
+    display: block;
+    font-size: .5rem;
+    color: red;
+    margin-top: 3px;
+}
+
+input {
+    color: black;
+    font-size: 12px;
+}
+
+select {
+    color: black;
+    font-size: 12px;
+}
+
+.model_container {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* opacity: 0; */
+    display: none;
+}
+
+.model_container.show {
+    cursor: auto;
+    pointer-events: auto;
+    display: flex;
+}
+
+.model {
+    display: none;
+}
+
+.model.show {
+    background-color: white;
+    width: 550px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    /* box-shadow: 0 2px 4px black; */
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modelPopUpForUpdatingCause {
+    display: none;
+}
+
+.modelPopUpForUpdatingCause.show {
+    background-color: white;
+    width: 550px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#closePopUpForm {
+    position: relative;
+    top: -20px;
+    left: 275px;
+    border-radius: 50%;
+    background-color: white;
+    color: #0000FA;
+    border: none;
+    font-family: Arial Rounded MT Bold;
+    font-size: 20px;
+    box-shadow: 0 0px 1px #0000FA;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.gobackBtn {
+    display: none;
+    border: none;
+    background-color: white;
+    align-self: flex-end;
+    margin-right: 40px;
+    font-size: 12px;
+    color: #0000FA;
+    cursor: pointer;
+}
+
+.donation_slider_one {
+    width: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* slider two */
+.donation_slider_two {
+    display: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.donation_slider_two.show {
+    width: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: auto;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.donation_ForUpdate {
+    width: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: auto;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modelHOne {
+    font-size: 2rem;
+    margin-top: 10px;
+    color: black;
+}
+
+
+.sameLineFields {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sameLinesInput {
+    border: none;
+    width: 100%;
+    height: 55px;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+.otherInputs {
+    width: 100%;
+}
+
+.otherInputs>input {
+    border: none;
+    width: 100%;
+    height: 55px;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+.aptInput {
+    border: none;
+    width: 100%;
+    height: 55px;
+    padding-left: 15px;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+.submitBtn {
+    background-color: #0000FA;
+    margin-top: 35px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    align-self: center;
+    color: white;
+    cursor: pointer;
+}
+.nextBtn{
+    background-color: #0000FA;
+    opacity: .2;
+    user-select: none;
+    pointer-events: none;
+}
+.submitBtnOne{
+    background-color: #0000FA;
+    opacity: .2;
+    user-select: none;
+    pointer-events: none;
+}
+.submitBtnTwo{
+    background-color: #0000FA;
+    opacity: .2;
+    user-select: none;
+    pointer-events: none;
+}
+.allow{
+    background-color: #0000FA;
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: all;
+    user-select: auto;
+}
