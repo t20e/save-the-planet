@@ -114,9 +114,6 @@ $(document).ready(function () {
         postData('/save-planet/donateToCause', 'formDonateCauseUpdate', 'cause_id', formData, form)
     })
 
-
-
-
     function postData(url, whichForm, cause_idName, formData, form) {
         console.log('submitted');
         $.ajax({

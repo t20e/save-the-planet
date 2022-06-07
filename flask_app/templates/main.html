@@ -111,8 +111,12 @@
                 <input type='submit' class="inputSubmit" value='submit'>
                 {#
                 <!-- this allows me to  make the connection with flask if user is not logged in--> #}
-                <button onclick="window.location.href='/save-planet/reg'" id="likeCause"> </button>
-                <button onclick="window.location.href='/save-planet/reg'" id="donateToCause">Donate</button>
+                <a href="{{ url_for('reg') }}">
+                    <button id="likeCause"></button>
+                </a>
+                <a href="{{ url_for('reg') }}">
+                    <button id="donateToCause">Donate</button>
+                </a>
                 {% endif %}
             </div>
         </div>
