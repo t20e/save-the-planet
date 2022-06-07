@@ -91,7 +91,6 @@ class Cause:
     def update_recent_contributions(cls, data):
         query = "SELECT name, first_name, last_name, age, email, profile_pic, state, country, donation_amount, last_donation_timestamp  FROM causes LEFT JOIN users_to_causes on causes.id = users_to_causes.cause_id LEFT JOIN users on users_to_causes.user_id = users.id WHERE donation_amount > 0 AND last_donation_timestamp >= %(last_time_called)s ORDER BY users_to_causes.last_donation_timestamp DESC"
         results = connectToMySQL('save_planet_schema').query_db(query, data)
-        print(results, 'result ffrom ne pull')
         return results
 # validate
     @staticmethod

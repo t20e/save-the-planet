@@ -1,14 +1,15 @@
 from fileinput import filename
-from unicodedata import name
-from flask import render_template, redirect, request,session, url_for, send_from_directory
+from flask import render_template, redirect, request,session, url_for, send_from_directory, flash
 from flask_app import app
-from flask import flash
 from flask_app.models.user import User
 from flask_bcrypt import Bcrypt        
 bcrypt = Bcrypt(app) 
 from werkzeug.utils import secure_filename
 import os
 import uuid as uuid
+from dotenv import load_dotenv
+from pathlib import Path
+import boto3 
 
 allowed_file_extentions = { 'png', 'jpg', 'jpeg'}
 upload_file_folder = 'flask_app/static/images/uploaded_files'
@@ -18,11 +19,26 @@ def allowed_files(file):
     return '.' in file and \
         file.rsplit('.', 1)[1].lower() in allowed_file_extentions
 
+
+#  path to read the env file
+dotenv_path = Path('flask_app/aws_connect.env')
+load_dotenv(dotenv_path = dotenv_path)
+#bucket s3
+region = "us-west-2"
+bucketNameClient = 'save-planet-images-s3'
+s3 = boto3.client('s3')
+# with open ('flask_app/static/images/causes/support_forest/deforest.jpeg', 'rb') as oneImg:
+#     s3.upload_fileobj(oneImg, bucketName, 'deforest.jpeg')
+#     print('uploaded, here')
+
 @app.route('/save-planet/login')
 def login():
-    # files = os.listdir(app.config['upload_file_folder'])
-    return render_template('login.html')
-
+    if 'user_visited' not in session:
+        session['user_visited'] = 1
+    else:
+        session['user_visited'] += 1
+    userVisted = session['user_visited']
+    return render_template('login.html', userVisted =userVisted)
 
 @app.route('/save-planet/loggin', methods=['POST'])
 def loggin():
@@ -52,7 +68,12 @@ def logout():
 
 @app.route('/save-planet/reg')
 def reg():
-    return render_template('reg.html')
+    if 'user_visited' not in session:
+        session['user_visited'] = 1
+    else:
+        session['user_visited'] += 1
+    userVisted = session['user_visited']
+    return render_template('reg.html', userVisted = userVisted)
 
 @app.route('/save-planet/registering', methods=['POST'])
 def create_user():
@@ -62,9 +83,12 @@ def create_user():
     if pfp.filename != '':
         if pfp and allowed_files(pfp.filename):
             filename = secure_filename(pfp.filename)
-            # set a number as file name
             pic_name = str(uuid.uuid1()) + '_' + filename
-            pfp.save(os.path.join(app.config['upload_file_folder'], pic_name))
+            #  image upload 
+            #get the url for that user and save the whole url to the db
+            s3.upload_fileobj(pfp, bucketNameClient, 'client/{}'.format(pic_name))
+            # get url back
+            pic_name = f'https://save-planet-images-s3.s3.amazonaws.com/client/{pic_name}'
         else:
             flash('profile picture needs to be in either jpeg, png, or jpg')
             return redirect('/save-planet/reg')

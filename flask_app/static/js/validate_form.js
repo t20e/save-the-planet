@@ -57,7 +57,7 @@ let cvv_error_one = false;
 let expirationCard_error_one = false;
 //update
 let amount_error_two = false;
-let email_error_two = false;
+let email_error_two = true;
 let nameOnCard_error_two = false;
 let cardType_error_two = false;
 let cardNum_error_two = false;

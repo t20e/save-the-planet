@@ -3,7 +3,7 @@ const xhr = new XMLHttpRequest();
 let allContributions;
 let pfp;
 let flag;
-const noPfp = '../static/images/uploaded_files/noPfp.jpg'
+const noPfp = "https://save-planet-images-s3.s3.amazonaws.com/client/noPfp.jpg"
 const loadAllContributionData = () => {
     $.ajax({
         type: "GET",
@@ -43,17 +43,17 @@ const getFlag = (flag) => {
         case "usa":
         case "USA":
         case "United States Of america":
-            return "../static/images/countries/usa_image.jpg";
+            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/usa_image.jpg";
         case "France":
         case "france":
-            return "../static/images/countries/france_image.png";
+            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/france_image.png";
         case "United Kingdom":
         case "UK":
         case "uk":
         case "britain":
-            return "../static/images/countries/uk_image.jpg";
+            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/uk_image.jpg";
         default:
-            return "../static/images/countries/gloabl.jpg";
+            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/gloabl.jpg";
         // break;
     }
 };
@@ -61,7 +61,7 @@ const addInitiateJSONtoHtml = (data) => {
     allContributions = data;
     for (let i = 0; i < allContributions.length; i++) {
         if( allContributions[i].profile_pic != null) {
-            pfp = "../static/images/uploaded_files/" + allContributions[i].profile_pic
+            pfp =  allContributions[i].profile_pic
         } else {
             pfp = noPfp
         }
@@ -102,7 +102,7 @@ const addInitiateJSONtoHtml = (data) => {
 const addNewDonations = (data) => {
     for (let i = 0; i < data.length; i++) {
         if (data[i].profile_pic != null) {
-            pfp = "../static/images/uploaded_files/" + data[i].profile_pic
+            pfp = data[i].profile_pic
         } else {
             pfp = noPfp
         }

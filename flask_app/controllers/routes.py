@@ -57,6 +57,7 @@ def liked_a_cause():
         return jsonify({"temperingCheck": "failed"})
     return jsonify({"succesfullly": "liked"})
 
+
 @app.route('/save-planet/donateToCause', methods=['POST'])
 def donate_to_cause():
     json = request.get_json()
@@ -142,10 +143,14 @@ def donate_to_cause():
         Cause.update_users_to_cause_table(data)
     return jsonify({"message": "succesfully added donation to db"})
 
-
 @app.route('/save-planet/about_us')
 def about_us_page():
-    return render_template('aboutUs.html')
+    if 'user_visited' not in session:
+        session['user_visited'] = 1
+    else:
+        session['user_visited'] += 1
+    userVisted = session['user_visited']
+    return render_template('aboutUs.html', userVisted = userVisted)
 
     # set api call
 @app.route('/save-planet/recentContributions')

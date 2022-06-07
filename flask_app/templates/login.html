@@ -9,6 +9,9 @@
     <title>Login</title>
 </head>
 <body>
+    {% if userVisted == 1%}
+    <script>alert('I build this website for my portfolio. You can not donate here please look elsewhere :} ')</script>
+    {%endif%}
     <div id="mainContainer">
         <div class="row1">
             <h1>Login</h1>
@@ -26,10 +29,10 @@
             <p>follow us here</p>
             <div class="follow_links">
                 <a href="https://twitter.com/Twitter">
-                    <img src="{{url_for('static',filename = 'images/icons/twitter-icon-83.png')}}" alt="">
+                    <img src="https://save-planet-images-s3.s3.amazonaws.com/app/icons/twitter-icon-83.png" alt="">
                 </a>
                 <a href="https://discord.com/channels/781093671554121759/782278328991481876">
-                    <img src="{{url_for('static',filename = 'images/icons/Discord-Logo-Color.png')}}" alt="">
+                    <img src="https://save-planet-images-s3.s3.amazonaws.com/app/icons/Discord-Logo-Color.png" alt="">
                 </a>
             </div>
         </div>

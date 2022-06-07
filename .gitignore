@@ -5,7 +5,7 @@ config/
 //ignore a whole folder/ directory
 images/
 flask_app/saved.txt
-
 //ingore file
 __init__.py
 uploaded_files/
+flask_app/aws_connect.env
