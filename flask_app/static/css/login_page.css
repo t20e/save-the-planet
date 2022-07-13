@@ -75,3 +75,27 @@ img{
     font-size: .7rem;
     margin-right: 120px;
 }
+@media (max-width : 480px) {
+    #mainContainer{
+        margin: 0 auto;
+        width: 90%;
+        height: auto; 
+        /* background-color: whitesmoke; */
+        /* //set to auto */
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 20px 0px;
+    }
+    input{
+        border: none;
+        margin-top: 20px;
+        width: 60%;
+        height: 50px;
+        padding-left: 15px;
+        background-color: rgb(0, 0, 0,.0);
+        border-bottom: 2px solid black;
+        outline: none;
+    }
+    }

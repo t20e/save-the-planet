@@ -102,6 +102,10 @@ select {
     padding: 10px 15px;
     cursor: pointer;
 }
+#closePopUpForm:hover{
+    background-color:#0000FA ;
+    color: white;
+}
 
 .gobackBtn {
     display: none;
@@ -160,7 +164,6 @@ select {
     color: black;
 }
 
-
 .sameLineFields {
     display: flex;
     justify-content: space-between;
@@ -186,6 +189,7 @@ select {
     border-bottom: 2px solid black;
     outline: none;
 }
+
 .aptInput {
     border: none;
     width: 100%;
@@ -194,6 +198,7 @@ select {
     border-bottom: 2px solid black;
     outline: none;
 }
+
 .submitBtn {
     background-color: #0000FA;
     margin-top: 35px;
@@ -206,28 +211,78 @@ select {
     color: white;
     cursor: pointer;
 }
-.nextBtn{
+
+.nextBtn {
     background-color: #0000FA;
     opacity: .2;
     user-select: none;
     pointer-events: none;
 }
-.submitBtnOne{
+
+.submitBtnOne {
     background-color: #0000FA;
     opacity: .2;
     user-select: none;
     pointer-events: none;
 }
-.submitBtnTwo{
+
+.submitBtnTwo {
     background-color: #0000FA;
     opacity: .2;
     user-select: none;
     pointer-events: none;
 }
-.allow{
+
+.allow {
     background-color: #0000FA;
     opacity: 1;
     cursor: pointer;
     pointer-events: all;
     user-select: auto;
+}
+
+@media(max-width : 480px) {
+    .model.show {
+        width: 90vw;
+    }
+
+    .modelPopUpForUpdatingCause.show {
+        width: 90vw;
+    }
+
+    .sameLinesInput {
+        width: 100%;
+    }
+
+    .otherInputs>input {
+        width: 100%;
+        padding: 0;
+    }
+
+    .aptInput {
+        width: 100%;
+        padding: 0;
+    }
+
+    .donation_slider_one {
+        width: 85vw;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .donation_slider_two.show {
+        display: flex;
+        justify-content: center;
+        width: 85vw;
+    }
+    
+    .donation_ForUpdate {
+        display: flex;
+        justify-content: center;
+        width: 85vw;
+    }
+    #closePopUpForm {
+        top: .2em;
+        left: 9.5em;
+    }
 }

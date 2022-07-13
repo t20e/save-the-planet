@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X- UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main_page.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/carousel.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/donation_pop_up.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/pop_up_error.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main_page.css')}}">
     <title>Save The Earth</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
@@ -17,9 +17,9 @@
     </script>
 </head>
 <body>
-    {% if userVisted == 1%}
+    <!-- {% if userVisted == 1%}
     <script>alert('I build this website for my portfolio. You can not donate here please look elsewhere :} ')</script>
-    {%endif%}
+    {%endif%} -->
     <script id="allCausesScript">
         const allCauses = JSON.parse('{{allCauses | tojson | safe}}')
         const userAlreadyContributed = {{ userAlreadyContributed | tojson | safe }}
@@ -277,8 +277,6 @@
                         </label>
                     </div>
                     <input class="submitBtn submitBtnTwo" type="submit" value="donate">
-                    <!-- <button class="submitBtn submitBtnTwo"
-                        onclick="submitForm('/save-planet/donateToCause','#donationFormUpdate', 'formDonateCauseUpdate', 'cause_id')">donate</button> -->
                 </div>
             </form>
         </div>

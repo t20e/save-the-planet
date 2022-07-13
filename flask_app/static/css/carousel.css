@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-}
 .carousel{
     position: relative;
     height: 500px;
@@ -17,6 +11,7 @@
 }
 .carousel_track-container{
     height: 100%;
+    width: 100%;
     position: relative;
     overflow: hidden;
     /* //overflow:hidden will hide the images from appearing on the side if u want to show the iamges then remove this line  */
@@ -73,3 +68,20 @@
 
 }
 .is-hidden{ display: none;}
+
+
+@media(max-width : 480px){
+    .carousel{
+        position: relative;
+        height: 300px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .carsousel_indicator{
+        width: 10px;
+        height: 10px;
+    }
+    .carousel_slide{
+        width: 100vw;
+    }
+}

@@ -7,7 +7,7 @@ const noPfp = "https://save-planet-images-s3.s3.amazonaws.com/client/noPfp.jpg"
 const loadAllContributionData = () => {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/save-planet/recentContributions",
+        url: "http://127.0.0.1:5000/api/save-planet/recentContributions",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (callback) {
@@ -151,7 +151,7 @@ const pullNewDonationJSON = (lastTimeCalled) => {
     //pull the new data based on time
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:5000/save-planet/updateRecentContributions${lastTimeCalled}`,
+        url: `http://127.0.0.1:5000/api/save-planet/updateRecentContributions${lastTimeCalled}`,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (callback) {

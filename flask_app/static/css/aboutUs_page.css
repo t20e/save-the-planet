@@ -5,7 +5,6 @@
     font-weight: lighter;
 }
 
-
 #mainContainer {
     height: auto;
     width: 900px;
@@ -17,4 +16,30 @@
 }
 h4{
     text-decoration: underline;
+}
+@media (max-width: 480px){
+    #mainContainer {
+        height: auto;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        margin: 0px auto;
+    }
+    h1{
+        font-size: 1.0rem;
+        white-space: nowrap;
+        margin-right: 20px;
+    }
+    a, h6{
+        white-space: nowrap;
+        font-size: .6rem;
+    }
+    h4{
+        text-decoration: underline;
+        white-space: nowrap;
+        font-size: .8rem;
+    }
+
 }

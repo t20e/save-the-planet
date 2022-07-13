@@ -42,7 +42,7 @@ def home():
             userAlreadyContributed = checkIfUserAlreadyLikedForHomePage_donated
     return render_template('main.html', allCauses=allCauses, userAlreadyContributed=userAlreadyContributed, cardData=cardData, user = user, userVisted = userVisted)
 
-@app.route('/save-planet/likedCause', methods=['POST'])
+@app.route('/api/save-planet/likedCause', methods=['POST'])
 def liked_a_cause():
     json = request.get_json()
     data = {
@@ -58,7 +58,7 @@ def liked_a_cause():
     return jsonify({"succesfullly": "liked"})
 
 
-@app.route('/save-planet/donateToCause', methods=['POST'])
+@app.route('/api/save-planet/donateToCause', methods=['POST'])
 def donate_to_cause():
     json = request.get_json()
     utc_time_stamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
@@ -153,12 +153,12 @@ def about_us_page():
     return render_template('aboutUs.html', userVisted = userVisted)
 
     # set api call
-@app.route('/save-planet/recentContributions')
+@app.route('/api/save-planet/recentContributions')
 def recentContributions():
     return jsonify(Cause.get_recent_contributions())
     # setup new api for updating recent contribution when user is active on site
 
-@app.route('/save-planet/updateRecentContributions<lastTimeCalled>')
+@app.route('/api/save-planet/updateRecentContributions<lastTimeCalled>')
 def updateRecentContributions(lastTimeCalled):
     # current date and time
     # new_time_call = datetime.now()

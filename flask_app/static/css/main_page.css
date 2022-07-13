@@ -5,8 +5,8 @@
   font-weight: lighter;
 }
 
-body {
-}
+body {}
+
 a {
   color: black;
   text-decoration: none;
@@ -152,6 +152,7 @@ h4 {
   background-color: #0000fa;
   border: none;
 }
+
 #donateToCause_url_link {
   user-select: none;
   height: 30px;
@@ -275,7 +276,7 @@ p {
   align-items: center;
 }
 
-.userDidThisSupport > p {
+.userDidThisSupport>p {
   color: #0000fa;
   font-size: 0.7rem;
   margin: 0;
@@ -310,4 +311,59 @@ p {
   border-radius: 50px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/* phone media query  */
+@media(max-width : 480px) {
+  #mainContainer {
+    width: 80vw;
+  }
+
+  .headerOne {
+    font-size: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .links_items {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    margin: 0px 5px;
+  }
+
+  .row1 {
+    width: 100vw;
+  }
+
+  .row2 {
+    height: auto;
+    margin-bottom: 25px;
+  }
+
+  .imgInfo_detail {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  hr {
+    width: 90vw;
+  }
+
+
+  .LikedOrDonated {
+    width: 96vw;
+  }
+
+  .userDidThisSupport>p {
+    font-size: 0.6rem;
+    text-align: center;
+  }
+
+  .date {
+    font-size: .4rem;
+  }
+
+  #linkImg {
+    top: 94vh;
+    left: 90vw;
+  }
 }
