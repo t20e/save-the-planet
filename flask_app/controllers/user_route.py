@@ -22,14 +22,15 @@ def allowed_files(file):
 
 
 #  path to read the env file
-    dotenv_path = Path('flask_app/aws_connect.env')
-    load_dotenv(dotenv_path=dotenv_path)
+dotenv_path = Path('flask_app/aws_connect.env')
+load_dotenv(dotenv_path=dotenv_path)
 
 
 # bucket s3
 region = "us-west-2"
 bucketNameClient = os.getenv("BUCKET_NAME_CLIENT")
 s3 = boto3.client('s3')
+
 
 @app.route('/save-planet/login')
 def login():

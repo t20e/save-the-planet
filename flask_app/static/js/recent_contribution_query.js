@@ -4,6 +4,7 @@ let allContributions;
 let pfp;
 let flag;
 const noPfp = "https://save-planet-images-s3.s3.amazonaws.com/client/noPfp.jpg"
+
 const loadAllContributionData = () => {
     $.ajax({
         type: "GET",
