@@ -11,11 +11,12 @@ from flask_app.models.user import User
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
+# allow users to upload files to a folder in the web app directory
+# upload_file_folder = 'flask_app/static/images/uploaded_files'
+# app.config['upload_file_folder'] = upload_file_folder
+
+
 allowed_file_extentions = {'png', 'jpg', 'jpeg'}
-upload_file_folder = 'flask_app/static/images/uploaded_files'
-app.config['upload_file_folder'] = upload_file_folder
-
-
 def allowed_files(file):
     return '.' in file and \
         file.rsplit('.', 1)[1].lower() in allowed_file_extentions
@@ -27,7 +28,7 @@ load_dotenv(dotenv_path=dotenv_path)
 
 
 # bucket s3
-region = "us-west-2"
+region = "us-east-1"
 bucketNameClient = os.getenv("BUCKET_NAME_CLIENT")
 s3 = boto3.client('s3')
 
@@ -94,7 +95,7 @@ def create_user():
             s3.upload_fileobj(pfp, bucketNameClient,
                               'client/{}'.format(pic_name))
             # get url back
-            pic_name = f'https://save-planet-images-s3.s3.amazonaws.com/client/{pic_name}'
+            pic_name = f'https://portfolio-avis-s3.s3.amazonaws.com/client/{pic_name}'
         else:
             flash('profile picture needs to be in either jpeg, png, or jpg')
             return redirect('/save-planet/reg')

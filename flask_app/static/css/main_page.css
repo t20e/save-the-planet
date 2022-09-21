@@ -125,12 +125,12 @@ h4 {
   border-radius: 10px;
   border: none;
   margin-right: 20px;
-  background-image: url("https://save-planet-images-s3.s3.amazonaws.com/app/icons/heartWhite.svg");
+  background-color: #0000fa;
+  background-image: url("https://portfolio-avis-s3.s3.amazonaws.com/app/icons/heartWhite.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
   user-select: none;
-  background-color: #0000fa;
 }
 
 .inputSubmit {
@@ -171,7 +171,7 @@ h4 {
   border-radius: 10px;
   border: none;
   margin-right: 20px;
-  background-image: url("https://save-planet-images-s3.s3.amazonaws.com/app/icons/white_checkMark_img.svg");
+  background-image: url("https://portfolio-avis-s3.s3.amazonaws.com/app/icons/white_checkMark_img.svg");
   background-repeat: no-repeat;
   background-size: 70%;
   background-position: center;

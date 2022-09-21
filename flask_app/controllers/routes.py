@@ -3,9 +3,6 @@ from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.causes import Cause
 from datetime import datetime
-import json
-import base64
-import os
 
 @app.errorhandler(404)
 def not_fount(e):

@@ -3,7 +3,7 @@ const xhr = new XMLHttpRequest();
 let allContributions;
 let pfp;
 let flag;
-const noPfp = "https://save-planet-images-s3.s3.amazonaws.com/client/noPfp.jpg"
+const noPfp = "https://portfolio-avis-s3.s3.amazonaws.com/app/icons/noPfp.png"
 
 const loadAllContributionData = () => {
     $.ajax({
@@ -44,17 +44,17 @@ const getFlag = (flag) => {
         case "usa":
         case "USA":
         case "United States Of america":
-            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/usa_image.jpg";
+            return "https://portfolio-avis-s3.s3.amazonaws.com/app/icons/usa_image.jpg";
         case "France":
         case "france":
-            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/france_image.png";
+            return "https://portfolio-avis-s3.s3.amazonaws.com/app/icons/france_image.png";
         case "United Kingdom":
         case "UK":
         case "uk":
         case "britain":
-            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/uk_image.jpg";
+            return "https://portfolio-avis-s3.s3.amazonaws.com/app/icons/uk_image.jpg";
         default:
-            return "https://save-planet-images-s3.s3.amazonaws.com/app/countries/gloabl.jpg";
+            return "https://portfolio-avis-s3.s3.amazonaws.com/app/icons/gloabl.jpg";
         // break;
     }
 };
