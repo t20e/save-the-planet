@@ -1,9 +1,11 @@
 import pymysql.cursors
 import os
 from pathlib import Path
+from os.path import join, dirname
 from dotenv import load_dotenv
 
-dotenv_path = Path('flask_app/.env')
+
+dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path=dotenv_path)
 
 # a cursor is the object we use to interact with the database

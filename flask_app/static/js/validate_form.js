@@ -104,7 +104,7 @@ $(function () {
         }
     })
     $('.address').focusout(function () {
-        if ($('.address').val().length < 6) {
+        if ($('.address').val().length <4) {
             $('.address_error_one').show().html("should be more than 3 characters")
             address_error_one = false
             allowNextBtn()

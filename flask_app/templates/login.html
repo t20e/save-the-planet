@@ -40,6 +40,7 @@
     {% if messages%}
         <div class=" model_container_error">
             <div class="model_error">
+                <button class='close_pup_up_regLogin' onclick={closePopUpErr()}>x</button>
                 <h4>Please fix these errors</h4>
                 {% if messages %}
                 <!-- check if there are any messages -->
