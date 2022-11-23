@@ -14,7 +14,7 @@
             <h1>Login</h1>
         </div>
         <div class="row2">
-            <form action='/save-planet/loggin' method='post'>
+            <form action='/logging_in' method='post'>
                 <input type='text' autofocus placeholder="email" name='email'>
                 <br>
                 <input type='password' placeholder="password" name='password'>
@@ -33,7 +33,7 @@
                 </a>
             </div>
         </div>
-            <a class="regInstead" href="/save-planet/reg">or register</a>
+            <a class="regInstead" href="/reg">or register</a>
     </div>
     <script src="{{url_for('static', filename='js/popUpErrorController.js')}}"></script>
     {% with messages = get_flashed_messages() %}

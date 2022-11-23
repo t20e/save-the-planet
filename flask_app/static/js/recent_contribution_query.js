@@ -8,7 +8,7 @@ const noPfp = "https://portfolio-avis-s3.s3.amazonaws.com/app/icons/noPfp.svg"
 const loadAllContributionData = () => {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/save-planet/api/recentContributions",
+        url: "http://127.0.0.1:5000/api/recentContributions",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (callback) {
@@ -152,7 +152,7 @@ const pullNewDonationJSON = (lastTimeCalled) => {
     //pull the new data based on time
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:5000/save-planet/api/updateRecentContributions${lastTimeCalled}`,
+        url: `http://127.0.0.1:5000/api/updateRecentContributions${lastTimeCalled}`,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (callback) {

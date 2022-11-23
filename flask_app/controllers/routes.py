@@ -8,7 +8,7 @@ from datetime import datetime
 def not_fount(e):
     return render_template('404.html'), 404
 
-@app.route('/save-planet')
+@app.route('/')
 def home():
     # //get all causes
     if 'user_visited' not in session:
@@ -39,7 +39,7 @@ def home():
             userAlreadyContributed = checkIfUserAlreadyLikedForHomePage_donated
     return render_template('main.html', allCauses=allCauses, userAlreadyContributed=userAlreadyContributed, cardData=cardData, user = user, userVisted = userVisted)
 
-@app.route('/save-planet/api/likedCause', methods=['POST'])
+@app.route('/api/likedCause', methods=['POST'])
 def liked_a_cause():
     json = request.get_json()
     data = {
@@ -55,7 +55,7 @@ def liked_a_cause():
     return jsonify({"succesfullly": "liked"})
 
 
-@app.route('/save-planet/api/donateToCause', methods=['POST'])
+@app.route('/api/donateToCause', methods=['POST'])
 def donate_to_cause():
     json = request.get_json()
     utc_time_stamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
@@ -140,7 +140,7 @@ def donate_to_cause():
         Cause.update_users_to_cause_table(data)
     return jsonify({"message": "succesfully added donation to db"})
 
-@app.route('/save-planet/about_us')
+@app.route('/about_us')
 def about_us_page():
     if 'user_visited' not in session:
         session['user_visited'] = 1
@@ -150,12 +150,12 @@ def about_us_page():
     return render_template('aboutUs.html', userVisted = userVisted)
 
     # set api call
-@app.route('/save-planet/api/recentContributions')
+@app.route('/api/recentContributions')
 def recentContributions():
     return jsonify(Cause.get_recent_contributions())
     # setup new api for updating recent contribution when user is active on site
 
-@app.route('/save-planet/api/updateRecentContributions<lastTimeCalled>')
+@app.route('/api/updateRecentContributions<lastTimeCalled>')
 def updateRecentContributions(lastTimeCalled):
     # current date and time
     # new_time_call = datetime.now()

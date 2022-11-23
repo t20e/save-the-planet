@@ -89,7 +89,7 @@ $(document).ready(function () {
             formData[input.attr("name")] = input.val();
             delete formData["undefined"];
         });
-        postData('/save-planet/api/likedCause', 'formLikeCause', 'cause_id_for_like', formData, form)
+        postData('/api/likedCause', 'formLikeCause', 'cause_id_for_like', formData, form)
     })
     $('#donationForm').submit(function (e) {
         e.preventDefault()
@@ -100,7 +100,7 @@ $(document).ready(function () {
             formData[input.attr("name")] = input.val();
             delete formData["undefined"];
         });
-        postData('/save-planet/api/donateToCause', 'formDonateCause', 'cause_id', formData, form)
+        postData('/api/donateToCause', 'formDonateCause', 'cause_id', formData, form)
     })
     $('#donationFormUpdate').submit(function (e) {
         e.preventDefault()
@@ -111,7 +111,7 @@ $(document).ready(function () {
             formData[input.attr("name")] = input.val();
             delete formData["undefined"];
         });
-        postData('/save-planet/api/donateToCause', 'formDonateCauseUpdate', 'cause_id', formData, form)
+        postData('/api/donateToCause', 'formDonateCauseUpdate', 'cause_id', formData, form)
     })
 
     function postData(url, whichForm, cause_idName, formData, form) {

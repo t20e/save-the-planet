@@ -19,12 +19,12 @@
             <div class="links">
                 {% if 'first_name' in session %}
                 <h6 class="links_items">Hi {{session['first_name']}} </h6>
-                <a class="links_items" href="/save-planet">home</a>
-                <a class="links_items" href="/save-planet/logout"> logout </a>
+                <a class="links_items" href="/">home</a>
+                <a class="links_items" href="/logout"> logout </a>
                 {% else %}
-                <a class="links_items" href="/save-planet">home</a>
-                <a class="links_items" href="/save-planet/reg">sign-up</a>
-                <a class="links_items" href="/save-planet/login">login</a>
+                <a class="links_items" href="/">home</a>
+                <a class="links_items" href="/reg">sign-up</a>
+                <a class="links_items" href="/login">login</a>
                 {% endif %}
             </div>
         </div>

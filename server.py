@@ -4,4 +4,4 @@ from flask_app.controllers import user_route # this connects routes file to serv
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

@@ -44,12 +44,12 @@
                     alt="" />
                 {% endif %}
                 <h6 class="links_items">Hi {{session['first_name']}} </h6>
-                <a class="links_items" href="/save-planet/about_us">about us</a>
-                <a class="links_items" href="/save-planet/logout"> logout </a>
+                <a class="links_items" href="/about_us">about us</a>
+                <a class="links_items" href="/logout"> logout </a>
                 {% else %}
-                <a class="links_items" href="/save-planet/about_us">about us</a>
-                <a class="links_items" href="/save-planet/reg">sign-up</a>
-                <a class="links_items" href="/save-planet/login">login</a>
+                <a class="links_items" href="/about_us">about us</a>
+                <a class="links_items" href="/reg">sign-up</a>
+                <a class="links_items" href="/login">login</a>
                 {% endif %}
             </div>
         </div>
@@ -221,7 +221,7 @@
                     </div>
                     <input type='submit' class="submitBtn submitBtnOne" value='donate'>
                     <!-- <button class="submitBtn submitBtnOne"
-                        onclick="submitForm('/save-planet/donateToCause','#donationForm', 'formDonateCause', 'cause_id')">donate</button> -->
+                        onclick="submitForm('/donateToCause','#donationForm', 'formDonateCause', 'cause_id')">donate</button> -->
                 </div>
             </form>
             <button class="gobackBtn" onclick="gobackForm()">back</button>

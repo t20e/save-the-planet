@@ -33,7 +33,7 @@ bucketNameClient = os.getenv("BUCKET_NAME_CLIENT")
 s3 = boto3.client('s3')
 
 
-@app.route('/save-planet/login')
+@app.route('/login')
 def login():
     if 'user_visited' not in session:
         session['user_visited'] = 1
@@ -43,7 +43,7 @@ def login():
     return render_template('login.html', userVisted=userVisted)
 
 
-@app.route('/save-planet/loggin', methods=['POST'])
+@app.route('/logging_in', methods=['POST'])
 def loggin():
     session.clear()
     data = {
@@ -53,25 +53,25 @@ def loggin():
     holder = User.check_user_login(data)
     if not holder:
         flash('invalid password/invalid')
-        return redirect('/save-planet/login')
+        return redirect('/login')
     if not bcrypt.check_password_hash(holder.password, request.form['password']):
         flash('invalid password/invalid')
-        return redirect('/save-planet/login')
+        return redirect('/login')
     print(holder.first_name, 'holder')
     session['first_name'] = holder.first_name.capitalize()
     session['last_name'] = holder.last_name.capitalize()
     session['email'] = holder.email
     session['id'] = holder.id
-    return redirect('/save-planet')
+    return redirect('/')
 
 
-@app.route('/save-planet/logout')
+@app.route('/logout')
 def logout():
     session.clear()
-    return redirect('/save-planet')
+    return redirect('/')
 
 
-@app.route('/save-planet/reg')
+@app.route('/reg')
 def reg():
     if 'user_visited' not in session:
         session['user_visited'] = 1
@@ -81,7 +81,7 @@ def reg():
     return render_template('reg.html', userVisted=userVisted)
 
 
-@app.route('/save-planet/registering', methods=['POST'])
+@app.route('/registering', methods=['POST'])
 def create_user():
     session.clear()
     pfp = request.files['pfp']
@@ -98,7 +98,7 @@ def create_user():
             pic_name = f'https://portfolio-avis-s3.s3.amazonaws.com/client/{pic_name}'
         else:
             flash('profile picture needs to be in either jpeg, png, or jpg')
-            return redirect('/save-planet/reg')
+            return redirect('/reg')
     data = {
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
@@ -112,7 +112,7 @@ def create_user():
     if not User.check_registration_fields(data):
         print('valid field register data')
     else:
-        return redirect('/save-planet/reg')
+        return redirect('/reg')
     holder = bcrypt.generate_password_hash(request.form['password'])
     data['password'] = holder
     del data['confirmPassword']
@@ -122,4 +122,4 @@ def create_user():
     session['last_name'] = data['last_name'].capitalize()
     session['email'] = data['email']
     session['id'] = create
-    return redirect('/save-planet')
+    return redirect('/')
